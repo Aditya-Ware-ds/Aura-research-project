@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Assessment</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Basic styling */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  line-height: 1.6;
+}
+
+/* Container and general layout */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+textarea {
+  resize: none;
+}
+
+.heading {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.subheading {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Card styling */
+.card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 40px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for cards */
+.card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+/* Form grid */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Form group styling */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input, select, textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Input and select hover and focus effects */
+input:focus, select:focus, textarea:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+/* Submit button */
+.submit-btn {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+/* Disease prediction box styling */
+.disease-prediction {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.prediction-box {
+  background-color: #f4f4f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e1e1e1;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.prediction-box:hover {
+  background-color: #ebebf0;
+  transform: translateY(-3px);
+}
+
+.disease-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.prediction-box p {
+  color: #555;
+  line-height: 1.5;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="heading">Health Assessment</h1>
+    <p class="subheading">Enter your personal and health information to get a disease prediction.</p>
+
+    <div class="card">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input id="age" type="number" placeholder="Enter your age">
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select id="gender">
+            <option value="" disabled selected>Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="weight">Weight (kg)</label>
+          <input id="weight" type="number" placeholder="Enter your weight">
+        </div>
+        <div class="form-group">
+          <label for="height">Height (cm)</label>
+          <input id="height" type="number" placeholder="Enter your height">
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="bmi">BMI</label>
+          <input id="bmi" type="number" placeholder="Enter your BMI">
+        </div>
+        <div class="form-group">
+          <label for="diseases">Current Diseases</label>
+          <textarea id="diseases" placeholder="List any current diseases"></textarea>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="emotional-state">Emotional State</label>
+          <select id="emotional-state">
+            <option value="" disabled selected>Select emotional state</option>
+            <option value="calm">Calm</option>
+            <option value="depressed">Depressed</option>
+            <option value="anxious">Anxious</option>
+            <option value="stressed">Stressed</option>
+          </select>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="frequency">Frequency (Hz)</label>
+            <input id="frequency" type="number" placeholder="Enter frequency">
+          </div>
+          <div class="form-group">
+            <label for="amplitude">Amplitude (μV)</label>
+            <input id="amplitude" type="number" placeholder="Enter amplitude">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="biofield-energy">Biofield Energy (J)</label>
+        <input id="biofield-energy" type="number" placeholder="Enter biofield energy">
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </div>
+
+    <div class="disease-prediction">
+      <h2>Disease Prediction</h2>
+      <p>Based on the information you provided, the predicted disease is:</p>
+      <div class="prediction-box">
+        <p class="disease-name">Diabetes</p>
+        <p>Your high BMI, current diseases, and emotional state suggest you may be at risk for developing diabetes. We recommend speaking with a healthcare professional for further evaluation and treatment options.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    function submitForm() {
+  // Example of handling form submission
+  const age = document.getElementById("age").value;
+  const gender = document.getElementById("gender").value;
+  const weight = document.getElementById("weight").value;
+  const height = document.getElementById("height").value;
+  const bmi = document.getElementById("bmi").value;
+  const diseases = document.getElementById("diseases").value;
+  const emotionalState = document.getElementById("emotional-state").value;
+  const frequency = document.getElementById("frequency").value;
+  const amplitude = document.getElementById("amplitude").value;
+  const biofieldEnergy = document.getElementById("biofield-energy").value;
+
+  // Logic for prediction can go here
+  console.log("Form submitted:", { age, gender, weight, height, bmi, diseases, emotionalState, frequency, amplitude, biofieldEnergy });
+}
+
+  </script>
+</body>
+
+</html>
